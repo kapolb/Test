@@ -1,0 +1,11 @@
+﻿@model KontaktStatisticsWeb.Models.Settings
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    System.Web.Helpers.WebGrid grid = new System.Web.Helpers.WebGrid(Model.All);
+}
+
+<h2>Nastavenie štatistiky</h2>
+@grid.GetHtml()
+        

@@ -1,0 +1,30 @@
+﻿@model KontaktStatisticsWeb.Models.StatisticDefinition
+@{
+    ViewBag.Title = "Generovanie štatistýk";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Výber štatistiky</h2>
+@using (Html.BeginForm())
+{ 
+    <div>
+        @(Html.DropDownListFor(model => model.Id,
+            new SelectList(KontaktStatisticsWeb.Models.StatisticDefinition.All, "Id", "Name"),
+            new { @id = "ddStatistic" }))
+        @(Html.ValidationMessageFor(model => model.Id))
+        @*<a id="btnEdit" type="submit" href="@Url.Content("~/Statistic/Index")">Edituj</a>*@
+        <input name="btnSubmit" type="submit" value="Generuj" style="display: block" />
+    </div>
+@*    <div>
+        @Html.LabelFor(model => model.FileName, "Nazov generovaneho suboru:")
+        @Html.TextBoxFor(model => model.FileName, new { @id = "tbFileName", @readonly = "readonly" })
+    </div>
+*@}
+@*<div>
+    <span>
+        <g:plusone size="small"></g:plusone>
+    </span><span><a href="https://twitter.com/share" class="twitter-share-button" data-count="none"
+        data-via="kapolb">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    </span>
+</div>
+*@

@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Kontakt.DAL.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="KontaktDALStoreContainer">
+          <EntitySet Name="Dotazy" EntityType="Kontakt.DAL.Store.Dotazy" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SKz" EntityType="Kontakt.DAL.Store.SKz" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="qAgSKzPoh" EntityType="Kontakt.DAL.Store.qAgSKzPoh" store:Type="Views" store:Schema="dbo" store:Name="qAgSKzPoh">
+            <DefiningQuery>SELECT 
+      [qAgSKzPoh].[ID] AS [ID], 
+      [qAgSKzPoh].[UsrOrder] AS [UsrOrder], 
+      [qAgSKzPoh].[Sel] AS [Sel], 
+      [qAgSKzPoh].[RelSKZpAg] AS [RelSKZpAg], 
+      [qAgSKzPoh].[RelID] AS [RelID], 
+      [qAgSKzPoh].[RefSKz] AS [RefSKz], 
+      [qAgSKzPoh].[RefUD] AS [RefUD], 
+      [qAgSKzPoh].[OrderFld] AS [OrderFld], 
+      [qAgSKzPoh].[RefStruct] AS [RefStruct], 
+      [qAgSKzPoh].[RefSklad] AS [RefSklad], 
+      [qAgSKzPoh].[IDS] AS [IDS], 
+      [qAgSKzPoh].[EAN] AS [EAN], 
+      [qAgSKzPoh].[Nazev] AS [Nazev], 
+      [qAgSKzPoh].[Nazev1] AS [Nazev1], 
+      [qAgSKzPoh].[Nazev2] AS [Nazev2], 
+      [qAgSKzPoh].[SText] AS [SText], 
+      [qAgSKzPoh].[Zaruka] AS [Zaruka], 
+      [qAgSKzPoh].[RelZaruka] AS [RelZaruka], 
+      [qAgSKzPoh].[RelOP] AS [RelOP], 
+      [qAgSKzPoh].[Datum] AS [Datum], 
+      [qAgSKzPoh].[PohPMJ] AS [PohPMJ], 
+      [qAgSKzPoh].[PohKc] AS [PohKc], 
+      [qAgSKzPoh].[KcCelkemPoh] AS [KcCelkemPoh], 
+      [qAgSKzPoh].[KcOceneni] AS [KcOceneni], 
+      [qAgSKzPoh].[VNakup] AS [VNakup], 
+      [qAgSKzPoh].[KcZisk] AS [KcZisk], 
+      [qAgSKzPoh].[KcCZisk] AS [KcCZisk], 
+      [qAgSKzPoh].[StavZ] AS [StavZ], 
+      [qAgSKzPoh].[SkUMD] AS [SkUMD], 
+      [qAgSKzPoh].[SkUD] AS [SkUD], 
+      [qAgSKzPoh].[Cislo] AS [Cislo], 
+      [qAgSKzPoh].[RefAD] AS [RefAD], 
+      [qAgSKzPoh].[RefADdod] AS [RefADdod], 
+      [qAgSKzPoh].[Firma] AS [Firma], 
+      [qAgSKzPoh].[Jmeno] AS [Jmeno], 
+      [qAgSKzPoh].[ICO] AS [ICO], 
+      [qAgSKzPoh].[RefStr] AS [RefStr], 
+      [qAgSKzPoh].[RefCin] AS [RefCin], 
+      [qAgSKzPoh].[CisloZAK] AS [CisloZAK], 
+      [qAgSKzPoh].[VCislo] AS [VCislo], 
+      [qAgSKzPoh].[SKzSKzVC] AS [SKzSKzVC], 
+      [qAgSKzPoh].[PolSKzVC] AS [PolSKzVC], 
+      [qAgSKzPoh].[Oznacil] AS [Oznacil], 
+      [qAgSKzPoh].[PzdAut] AS [PzdAut]
+      FROM [dbo].[qAgSKzPoh] AS [qAgSKzPoh]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="Dotazy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RelAg" Type="int" />
+          <Property Name="RelSubID" Type="int" />
+          <Property Name="UsrSel" Type="bit" Nullable="false" />
+          <Property Name="User" Type="varchar" MaxLength="2" />
+          <Property Name="Filter" Type="text" />
+          <Property Name="Sort" Type="varchar" MaxLength="255" />
+          <Property Name="SortRef" Type="varchar" MaxLength="64" />
+          <Property Name="Popis" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="SKz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UsrOrder" Type="int" />
+          <Property Name="Sel" Type="bit" Nullable="false" />
+          <Property Name="RelSkTyp" Type="int" />
+          <Property Name="RefSklad" Type="int" />
+          <Property Name="RefStruct" Type="int" />
+          <Property Name="RefSkSkup" Type="int" />
+          <Property Name="RelDPHn" Type="int" />
+          <Property Name="RelDPHp" Type="int" />
+          <Property Name="RelSkDruh" Type="int" />
+          <Property Name="Obrat" Type="bit" Nullable="false" />
+          <Property Name="Odbyt" Type="bit" Nullable="false" />
+          <Property Name="SvazanaZas" Type="bit" Nullable="false" />
+          <Property Name="RelSKzVC" Type="int" />
+          <Property Name="AUcet" Type="varchar" MaxLength="9" />
+          <Property Name="Vynos" Type="varchar" MaxLength="9" />
+          <Property Name="Naklad" Type="varchar" MaxLength="9" />
+          <Property Name="IDS" Type="varchar" MaxLength="64" />
+          <Property Name="EAN" Type="varchar" MaxLength="20" />
+          <Property Name="Nazev" Type="varchar" MaxLength="90" />
+          <Property Name="Nazev1" Type="varchar" MaxLength="90" />
+          <Property Name="Nazev2" Type="varchar" MaxLength="90" />
+          <Property Name="SText" Type="varchar" MaxLength="90" />
+          <Property Name="SText1" Type="varchar" MaxLength="90" />
+          <Property Name="SText2" Type="varchar" MaxLength="90" />
+          <Property Name="MJ" Type="varchar" MaxLength="10" />
+          <Property Name="MJ2" Type="varchar" MaxLength="10" />
+          <Property Name="MJ3" Type="varchar" MaxLength="10" />
+          <Property Name="MJ2Koef" Type="float" />
+          <Property Name="MJ3Koef" Type="float" />
+          <Property Name="StavZ" Type="float" />
+          <Property Name="MinLim" Type="float" />
+          <Property Name="MinMax" Type="float" />
+          <Property Name="Hmotnost" Type="float" />
+          <Property Name="Objem" Type="float" />
+          <Property Name="NazevRP" Type="varchar" MaxLength="24" />
+          <Property Name="RefSkEURO" Type="int" />
+          <Property Name="Rezer" Type="float" />
+          <Property Name="ObjedP" Type="float" />
+          <Property Name="ObjedV" Type="float" />
+          <Property Name="Reklam" Type="float" />
+          <Property Name="NakupC" Type="money" />
+          <Property Name="NakupDPH" Type="money" />
+          <Property Name="NakupCM" Type="money" />
+          <Property Name="CMKodNC" Type="varchar" MaxLength="3" />
+          <Property Name="VNakup" Type="money" />
+          <Property Name="ProdejKc" Type="money" />
+          <Property Name="ProdejDPH" Type="money" />
+          <Property Name="ProdejCM" Type="money" />
+          <Property Name="CMKodPC" Type="varchar" MaxLength="3" />
+          <Property Name="ObjMn" Type="float" />
+          <Property Name="ObjNazev" Type="varchar" MaxLength="90" />
+          <Property Name="RefAD" Type="int" />
+          <Property Name="Firma" Type="varchar" MaxLength="96" />
+          <Property Name="PLU" Type="int" />
+          <Property Name="IObchod" Type="bit" Nullable="false" />
+          <Property Name="Obrazek" Type="varchar" MaxLength="200" />
+          <Property Name="Popis" Type="varchar" MaxLength="240" />
+          <Property Name="Popis2" Type="text" />
+          <Property Name="Vyrobce" Type="varchar" MaxLength="96" />
+          <Property Name="RelZaruka" Type="int" />
+          <Property Name="Zaruka" Type="int" />
+          <Property Name="EditVyr" Type="bit" Nullable="false" />
+          <Property Name="RefPzdJ" Type="int" />
+          <Property Name="Pozn" Type="text" />
+          <Property Name="DatCreate" Type="datetime" />
+          <Property Name="DatSave" Type="datetime" />
+          <Property Name="Oznacil" Type="varchar" MaxLength="2" />
+          <Property Name="Ucetni" Type="varchar" MaxLength="2" />
+          <Property Name="Creator" Type="varchar" MaxLength="2" />
+          <Property Name="Novinka" Type="bit" Nullable="false" />
+          <Property Name="Doprodej" Type="bit" Nullable="false" />
+          <Property Name="Akce" Type="bit" Nullable="false" />
+          <Property Name="Doporucujeme" Type="bit" Nullable="false" />
+          <Property Name="Sleva" Type="bit" Nullable="false" />
+          <Property Name="Dodani" Type="varchar" MaxLength="64" />
+          <Property Name="Doprava" Type="varchar" MaxLength="64" />
+          <Property Name="SyncGUID" Type="uniqueidentifier" />
+          <Property Name="ItsKod" Type="varchar" MaxLength="8" />
+          <Property Name="ItsPopis" Type="varchar" MaxLength="255" />
+          <Property Name="ItsMJ" Type="varchar" MaxLength="3" />
+          <Property Name="ItsMJKoef" Type="float" />
+          <Property Name="ItsZeme" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Kontakt2011.dbo.qAgSKzPoh' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="qAgSKzPoh">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Sel" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UsrOrder" Type="int" />
+          <Property Name="Sel" Type="bit" Nullable="false" />
+          <Property Name="RelSKZpAg" Type="int" />
+          <Property Name="RelID" Type="int" />
+          <Property Name="RefSKz" Type="int" />
+          <Property Name="RefUD" Type="int" />
+          <Property Name="OrderFld" Type="int" />
+          <Property Name="RefStruct" Type="int" />
+          <Property Name="RefSklad" Type="int" />
+          <Property Name="IDS" Type="varchar" MaxLength="64" />
+          <Property Name="EAN" Type="varchar" MaxLength="20" />
+          <Property Name="Nazev" Type="varchar" MaxLength="90" />
+          <Property Name="Nazev1" Type="varchar" MaxLength="90" />
+          <Property Name="Nazev2" Type="varchar" MaxLength="90" />
+          <Property Name="SText" Type="varchar" MaxLength="90" />
+          <Property Name="Zaruka" Type="int" />
+          <Property Name="RelZaruka" Type="int" />
+          <Property Name="RelOP" Type="int" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="PohPMJ" Type="float" />
+          <Property Name="PohKc" Type="money" />
+          <Property Name="KcCelkemPoh" Type="money" />
+          <Property Name="KcOceneni" Type="money" />
+          <Property Name="VNakup" Type="money" />
+          <Property Name="KcZisk" Type="money" />
+          <Property Name="KcCZisk" Type="money" />
+          <Property Name="StavZ" Type="float" />
+          <Property Name="SkUMD" Type="varchar" MaxLength="9" />
+          <Property Name="SkUD" Type="varchar" MaxLength="9" />
+          <Property Name="Cislo" Type="varchar" MaxLength="10" />
+          <Property Name="RefAD" Type="int" />
+          <Property Name="RefADdod" Type="int" />
+          <Property Name="Firma" Type="varchar" MaxLength="96" />
+          <Property Name="Jmeno" Type="varchar" MaxLength="32" />
+          <Property Name="ICO" Type="varchar" MaxLength="15" />
+          <Property Name="RefStr" Type="int" />
+          <Property Name="RefCin" Type="int" />
+          <Property Name="CisloZAK" Type="varchar" MaxLength="12" />
+          <Property Name="VCislo" Type="varchar" MaxLength="40" />
+          <Property Name="SKzSKzVC" Type="int" />
+          <Property Name="PolSKzVC" Type="int" />
+          <Property Name="Oznacil" Type="varchar" MaxLength="2" />
+          <Property Name="PzdAut" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Kontakt.DAL" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="StatisticsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="qAgSKzPoh" EntityType="Kontakt.DAL.qAgSKzPoh" />
+          <EntitySet Name="Dotazy" EntityType="Kontakt.DAL.Dotazy" />
+          <EntitySet Name="SKz" EntityType="Kontakt.DAL.SKz" />
+        </EntityContainer>
+        <EntityType Name="qAgSKzPoh">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Sel" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UsrOrder" Type="Int32" />
+          <Property Name="Sel" Type="Boolean" Nullable="false" />
+          <Property Name="RelSKZpAg" Type="Int32" />
+          <Property Name="RelID" Type="Int32" />
+          <Property Name="RefSKz" Type="Int32" />
+          <Property Name="RefUD" Type="Int32" />
+          <Property Name="OrderFld" Type="Int32" />
+          <Property Name="RefStruct" Type="Int32" />
+          <Property Name="RefSklad" Type="Int32" />
+          <Property Name="IDS" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="EAN" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Nazev" Type="String" MaxLength="90" Unicode="false" FixedLength="false" />
+          <Property Name="Nazev1" Type="String" MaxLength="90" Unicode="false" FixedLength="false" />
+          <Property Name="Nazev2" Type="String" MaxLength="90" Unicode="false" FixedLength="false" />
+          <Property Name="SText" Type="String" MaxLength="90" Unicode="false" FixedLength="false" />
+          <Property Name="Zaruka" Type="Int32" />
+          <Property Name="RelZaruka" Type="Int32" />
+          <Property Name="RelOP" Type="Int32" />
+          <Property Name="Datum" Type="DateTime" />
+          <Property Name="PohPMJ" Type="Double" />
+          <Property Name="PohKc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KcCelkemPoh" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KcOceneni" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VNakup" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KcZisk" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KcCZisk" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StavZ" Type="Double" />
+          <Property Name="SkUMD" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="SkUD" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="Cislo" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RefAD" Type="Int32" />
+          <Property Name="RefADdod" Type="Int32" />
+          <Property Name="Firma" Type="String" MaxLength="96" Unicode="false" FixedLength="false" />
+          <Property Name="Jmeno" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="ICO" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="RefStr" Type="Int32" />
+          <Property Name="RefCin" Type="Int32" />
+          <Property Name="CisloZAK" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="VCislo" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="SKzSKzVC" Type="Int32" />
+          <Property Name="PolSKzVC" Type="Int32" />
+          <Property Name="Oznacil" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="PzdAut" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Dotazy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RelAg" />
+          <Property Type="Int32" Name="RelSubID" />
+          <Property Type="Boolean" Name="UsrSel" Nullable="false" />
+          <Property Type="String" Name="User" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Filter" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Sort" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SortRef" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Popis" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SKz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UsrOrder" />
+          <Property Type="Boolean" Name="Sel" Nullable="false" />
+          <Property Type="Int32" Name="RelSkTyp" />
+          <Property Type="Int32" Name="RefSklad" />
+          <Property Type="Int32" Name="RefStruct" />
+          <Property Type="Int32" Name="RefSkSkup" />
+          <Property Type="Int32" Name="RelDPHn" />
+          <Property Type="Int32" Name="RelDPHp" />
+          <Property Type="Int32" Name="RelSkDruh" />
+          <Property Type="Boolean" Name="Obrat" Nullable="false" />
+          <Property Type="Boolean" Name="Odbyt" Nullable="false" />
+          <Property Type="Boolean" Name="SvazanaZas" Nullable="false" />
+          <Property Type="Int32" Name="RelSKzVC" />
+          <Property Type="String" Name="AUcet" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vynos" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Naklad" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IDS" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EAN" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nazev" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nazev1" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nazev2" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SText" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SText1" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SText2" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MJ" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MJ2" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MJ3" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="MJ2Koef" />
+          <Property Type="Double" Name="MJ3Koef" />
+          <Property Type="Double" Name="StavZ" />
+          <Property Type="Double" Name="MinLim" />
+          <Property Type="Double" Name="MinMax" />
+          <Property Type="Double" Name="Hmotnost" />
+          <Property Type="Double" Name="Objem" />
+          <Property Type="String" Name="NazevRP" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RefSkEURO" />
+          <Property Type="Double" Name="Rezer" />
+          <Property Type="Double" Name="ObjedP" />
+          <Property Type="Double" Name="ObjedV" />
+          <Property Type="Double" Name="Reklam" />
+          <Property Type="Decimal" Name="NakupC" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="NakupDPH" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="NakupCM" Precision="19" Scale="4" />
+          <Property Type="String" Name="CMKodNC" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="VNakup" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="ProdejKc" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="ProdejDPH" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="ProdejCM" Precision="19" Scale="4" />
+          <Property Type="String" Name="CMKodPC" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="ObjMn" />
+          <Property Type="String" Name="ObjNazev" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RefAD" />
+          <Property Type="String" Name="Firma" MaxLength="96" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PLU" />
+          <Property Type="Boolean" Name="IObchod" Nullable="false" />
+          <Property Type="String" Name="Obrazek" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Popis" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Popis2" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vyrobce" MaxLength="96" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RelZaruka" />
+          <Property Type="Int32" Name="Zaruka" />
+          <Property Type="Boolean" Name="EditVyr" Nullable="false" />
+          <Property Type="Int32" Name="RefPzdJ" />
+          <Property Type="String" Name="Pozn" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DatCreate" />
+          <Property Type="DateTime" Name="DatSave" />
+          <Property Type="String" Name="Oznacil" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Ucetni" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Creator" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Novinka" Nullable="false" />
+          <Property Type="Boolean" Name="Doprodej" Nullable="false" />
+          <Property Type="Boolean" Name="Akce" Nullable="false" />
+          <Property Type="Boolean" Name="Doporucujeme" Nullable="false" />
+          <Property Type="Boolean" Name="Sleva" Nullable="false" />
+          <Property Type="String" Name="Dodani" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Doprava" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="SyncGUID" />
+          <Property Type="String" Name="ItsKod" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItsPopis" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItsMJ" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="ItsMJKoef" />
+          <Property Type="String" Name="ItsZeme" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KontaktDALStoreContainer" CdmEntityContainer="StatisticsEntities">
+          <EntitySetMapping Name="qAgSKzPoh"><EntityTypeMapping TypeName="Kontakt.DAL.qAgSKzPoh"><MappingFragment StoreEntitySet="qAgSKzPoh">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="UsrOrder" ColumnName="UsrOrder" />
+            <ScalarProperty Name="Sel" ColumnName="Sel" />
+            <ScalarProperty Name="RelSKZpAg" ColumnName="RelSKZpAg" />
+            <ScalarProperty Name="RelID" ColumnName="RelID" />
+            <ScalarProperty Name="RefSKz" ColumnName="RefSKz" />
+            <ScalarProperty Name="RefUD" ColumnName="RefUD" />
+            <ScalarProperty Name="OrderFld" ColumnName="OrderFld" />
+            <ScalarProperty Name="RefStruct" ColumnName="RefStruct" />
+            <ScalarProperty Name="RefSklad" ColumnName="RefSklad" />
+            <ScalarProperty Name="IDS" ColumnName="IDS" />
+            <ScalarProperty Name="EAN" ColumnName="EAN" />
+            <ScalarProperty Name="Nazev" ColumnName="Nazev" />
+            <ScalarProperty Name="Nazev1" ColumnName="Nazev1" />
+            <ScalarProperty Name="Nazev2" ColumnName="Nazev2" />
+            <ScalarProperty Name="SText" ColumnName="SText" />
+            <ScalarProperty Name="Zaruka" ColumnName="Zaruka" />
+            <ScalarProperty Name="RelZaruka" ColumnName="RelZaruka" />
+            <ScalarProperty Name="RelOP" ColumnName="RelOP" />
+            <ScalarProperty Name="Datum" ColumnName="Datum" />
+            <ScalarProperty Name="PohPMJ" ColumnName="PohPMJ" />
+            <ScalarProperty Name="PohKc" ColumnName="PohKc" />
+            <ScalarProperty Name="KcCelkemPoh" ColumnName="KcCelkemPoh" />
+            <ScalarProperty Name="KcOceneni" ColumnName="KcOceneni" />
+            <ScalarProperty Name="VNakup" ColumnName="VNakup" />
+            <ScalarProperty Name="KcZisk" ColumnName="KcZisk" />
+            <ScalarProperty Name="KcCZisk" ColumnName="KcCZisk" />
+            <ScalarProperty Name="StavZ" ColumnName="StavZ" />
+            <ScalarProperty Name="SkUMD" ColumnName="SkUMD" />
+            <ScalarProperty Name="SkUD" ColumnName="SkUD" />
+            <ScalarProperty Name="Cislo" ColumnName="Cislo" />
+            <ScalarProperty Name="RefAD" ColumnName="RefAD" />
+            <ScalarProperty Name="RefADdod" ColumnName="RefADdod" />
+            <ScalarProperty Name="Firma" ColumnName="Firma" />
+            <ScalarProperty Name="Jmeno" ColumnName="Jmeno" />
+            <ScalarProperty Name="ICO" ColumnName="ICO" />
+            <ScalarProperty Name="RefStr" ColumnName="RefStr" />
+            <ScalarProperty Name="RefCin" ColumnName="RefCin" />
+            <ScalarProperty Name="CisloZAK" ColumnName="CisloZAK" />
+            <ScalarProperty Name="VCislo" ColumnName="VCislo" />
+            <ScalarProperty Name="SKzSKzVC" ColumnName="SKzSKzVC" />
+            <ScalarProperty Name="PolSKzVC" ColumnName="PolSKzVC" />
+            <ScalarProperty Name="Oznacil" ColumnName="Oznacil" />
+            <ScalarProperty Name="PzdAut" ColumnName="PzdAut" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Dotazy">
+            <EntityTypeMapping TypeName="Kontakt.DAL.Dotazy">
+              <MappingFragment StoreEntitySet="Dotazy">
+                <ScalarProperty Name="Popis" ColumnName="Popis" />
+                <ScalarProperty Name="SortRef" ColumnName="SortRef" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Filter" ColumnName="Filter" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UsrSel" ColumnName="UsrSel" />
+                <ScalarProperty Name="RelSubID" ColumnName="RelSubID" />
+                <ScalarProperty Name="RelAg" ColumnName="RelAg" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SKz">
+            <EntityTypeMapping TypeName="Kontakt.DAL.SKz">
+              <MappingFragment StoreEntitySet="SKz">
+                <ScalarProperty Name="ItsZeme" ColumnName="ItsZeme" />
+                <ScalarProperty Name="ItsMJKoef" ColumnName="ItsMJKoef" />
+                <ScalarProperty Name="ItsMJ" ColumnName="ItsMJ" />
+                <ScalarProperty Name="ItsPopis" ColumnName="ItsPopis" />
+                <ScalarProperty Name="ItsKod" ColumnName="ItsKod" />
+                <ScalarProperty Name="SyncGUID" ColumnName="SyncGUID" />
+                <ScalarProperty Name="Doprava" ColumnName="Doprava" />
+                <ScalarProperty Name="Dodani" ColumnName="Dodani" />
+                <ScalarProperty Name="Sleva" ColumnName="Sleva" />
+                <ScalarProperty Name="Doporucujeme" ColumnName="Doporucujeme" />
+                <ScalarProperty Name="Akce" ColumnName="Akce" />
+                <ScalarProperty Name="Doprodej" ColumnName="Doprodej" />
+                <ScalarProperty Name="Novinka" ColumnName="Novinka" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Ucetni" ColumnName="Ucetni" />
+                <ScalarProperty Name="Oznacil" ColumnName="Oznacil" />
+                <ScalarProperty Name="DatSave" ColumnName="DatSave" />
+                <ScalarProperty Name="DatCreate" ColumnName="DatCreate" />
+                <ScalarProperty Name="Pozn" ColumnName="Pozn" />
+                <ScalarProperty Name="RefPzdJ" ColumnName="RefPzdJ" />
+                <ScalarProperty Name="EditVyr" ColumnName="EditVyr" />
+                <ScalarProperty Name="Zaruka" ColumnName="Zaruka" />
+                <ScalarProperty Name="RelZaruka" ColumnName="RelZaruka" />
+                <ScalarProperty Name="Vyrobce" ColumnName="Vyrobce" />
+                <ScalarProperty Name="Popis2" ColumnName="Popis2" />
+                <ScalarProperty Name="Popis" ColumnName="Popis" />
+                <ScalarProperty Name="Obrazek" ColumnName="Obrazek" />
+                <ScalarProperty Name="IObchod" ColumnName="IObchod" />
+                <ScalarProperty Name="PLU" ColumnName="PLU" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="RefAD" ColumnName="RefAD" />
+                <ScalarProperty Name="ObjNazev" ColumnName="ObjNazev" />
+                <ScalarProperty Name="ObjMn" ColumnName="ObjMn" />
+                <ScalarProperty Name="CMKodPC" ColumnName="CMKodPC" />
+                <ScalarProperty Name="ProdejCM" ColumnName="ProdejCM" />
+                <ScalarProperty Name="ProdejDPH" ColumnName="ProdejDPH" />
+                <ScalarProperty Name="ProdejKc" ColumnName="ProdejKc" />
+                <ScalarProperty Name="VNakup" ColumnName="VNakup" />
+                <ScalarProperty Name="CMKodNC" ColumnName="CMKodNC" />
+                <ScalarProperty Name="NakupCM" ColumnName="NakupCM" />
+                <ScalarProperty Name="NakupDPH" ColumnName="NakupDPH" />
+                <ScalarProperty Name="NakupC" ColumnName="NakupC" />
+                <ScalarProperty Name="Reklam" ColumnName="Reklam" />
+                <ScalarProperty Name="ObjedV" ColumnName="ObjedV" />
+                <ScalarProperty Name="ObjedP" ColumnName="ObjedP" />
+                <ScalarProperty Name="Rezer" ColumnName="Rezer" />
+                <ScalarProperty Name="RefSkEURO" ColumnName="RefSkEURO" />
+                <ScalarProperty Name="NazevRP" ColumnName="NazevRP" />
+                <ScalarProperty Name="Objem" ColumnName="Objem" />
+                <ScalarProperty Name="Hmotnost" ColumnName="Hmotnost" />
+                <ScalarProperty Name="MinMax" ColumnName="MinMax" />
+                <ScalarProperty Name="MinLim" ColumnName="MinLim" />
+                <ScalarProperty Name="StavZ" ColumnName="StavZ" />
+                <ScalarProperty Name="MJ3Koef" ColumnName="MJ3Koef" />
+                <ScalarProperty Name="MJ2Koef" ColumnName="MJ2Koef" />
+                <ScalarProperty Name="MJ3" ColumnName="MJ3" />
+                <ScalarProperty Name="MJ2" ColumnName="MJ2" />
+                <ScalarProperty Name="MJ" ColumnName="MJ" />
+                <ScalarProperty Name="SText2" ColumnName="SText2" />
+                <ScalarProperty Name="SText1" ColumnName="SText1" />
+                <ScalarProperty Name="SText" ColumnName="SText" />
+                <ScalarProperty Name="Nazev2" ColumnName="Nazev2" />
+                <ScalarProperty Name="Nazev1" ColumnName="Nazev1" />
+                <ScalarProperty Name="Nazev" ColumnName="Nazev" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="IDS" ColumnName="IDS" />
+                <ScalarProperty Name="Naklad" ColumnName="Naklad" />
+                <ScalarProperty Name="Vynos" ColumnName="Vynos" />
+                <ScalarProperty Name="AUcet" ColumnName="AUcet" />
+                <ScalarProperty Name="RelSKzVC" ColumnName="RelSKzVC" />
+                <ScalarProperty Name="SvazanaZas" ColumnName="SvazanaZas" />
+                <ScalarProperty Name="Odbyt" ColumnName="Odbyt" />
+                <ScalarProperty Name="Obrat" ColumnName="Obrat" />
+                <ScalarProperty Name="RelSkDruh" ColumnName="RelSkDruh" />
+                <ScalarProperty Name="RelDPHp" ColumnName="RelDPHp" />
+                <ScalarProperty Name="RelDPHn" ColumnName="RelDPHn" />
+                <ScalarProperty Name="RefSkSkup" ColumnName="RefSkSkup" />
+                <ScalarProperty Name="RefStruct" ColumnName="RefStruct" />
+                <ScalarProperty Name="RefSklad" ColumnName="RefSklad" />
+                <ScalarProperty Name="RelSkTyp" ColumnName="RelSkTyp" />
+                <ScalarProperty Name="Sel" ColumnName="Sel" />
+                <ScalarProperty Name="UsrOrder" ColumnName="UsrOrder" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="StatisticsModel" ZoomLevel="74">
+        <EntityTypeShape EntityType="Kontakt.DAL.qAgSKzPoh" Width="1.5" PointX="0.75" PointY="0.75" Height="9.4800423177083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kontakt.DAL.Dotazy" Width="1.5" PointX="3.375" PointY="0.75" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="Kontakt.DAL.SKz" Width="1.5" PointX="5.625" PointY="0.75" Height="16.979798177083335" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

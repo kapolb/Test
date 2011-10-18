@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStatisticInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <StatisticInfo>
+    <Id>1</Id>
+    <Name>Káble</Name>
+    <ClassName>Kontakt.BL.CablesData</ClassName>
+    <TemplateName>601</TemplateName>
+    <GenerateName>601_Kable</GenerateName>
+    <FilterForDataId>118</FilterForDataId>
+    <FilterForData>x spotreba 601-/624-/625- vsetke lana IWRC/FC/IWSC</FilterForData>
+    <FilterForOrderedId>135</FilterForOrderedId>
+    <FilterForOrdered>objednane lana pre nasu vyrobu 601-/624-/625- IWRC/FC/IWSC</FilterForOrdered>
+    <FilterForOnStockId>94</FilterForOnStockId>
+    <FilterForOnStock>x stav skladu 601-/624-/625- lana komplet - FC/IWRC/IWSC</FilterForOnStock>
+  </StatisticInfo>
+  <StatisticInfo>
+    <Id>2</Id>
+    <Name>Káble filtrované</Name>
+    <ClassName>Kontakt.BL.CablesDataFiltered</ClassName>
+    <TemplateName>601</TemplateName>
+    <GenerateName>601_Kable_IWRC</GenerateName>
+    <FilterForDataId>118</FilterForDataId>
+    <FilterForData>x spotreba 601-/624-/625- vsetke lana IWRC/FC/IWSC</FilterForData>
+    <FilterForOrderedId>135</FilterForOrderedId>
+    <FilterForOrdered>objednane lana pre nasu vyrobu 601-/624-/625- IWRC/FC/IWSC</FilterForOrdered>
+    <FilterForOnStockId>94</FilterForOnStockId>
+    <FilterForOnStock>x stav skladu 601-/624-/625- lana komplet - FC/IWRC/IWSC</FilterForOnStock>
+  </StatisticInfo>
+</ArrayOfStatisticInfo>

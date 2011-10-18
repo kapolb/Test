@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <createDate>A8</createDate>
+  <firstRow>11</firstRow>
+  <values>
+    <name>A{0}</name>
+    <kgPerUnit>B{0}</kgPerUnit>
+    <usage2010>C{0}</usage2010>
+    <usage2011>E{0}</usage2011>
+    <onStock>G{0}</onStock>
+  </values>
+  <formulas>
+    <formula><cell>D{0}</cell><value>=C{0}/B{0}</value></formula>
+    <formula><cell>F{0}</cell><value>=E{0}/B{0}</value></formula>
+    <formula><cell>H{0}</cell><value>=G{0}/B{0}</value></formula>
+    <formula><cell>I{0}</cell><value>=J{0}+L{0}+N{0}</value></formula>
+    <formula><cell>K{0}</cell><value>=J{0}/$B${0}</value></formula>
+    <formula><cell>M{0}</cell><value>=L{0}/$B${0}</value></formula>
+    <formula><cell>O{0}</cell><value>=N{0}/$B${0}</value></formula>
+    <formula><cell>P{0}</cell><value>=E{0}+((E{0}/$C$2)*$H$3)+(((E{0}/$C$2)*$I$3)*$I$4)+(((E{0}/$C$2)*$J$3)*$J$4)+(((E{0}/$C$2)*$K$3)*$K$4)</value></formula>
+    <formula><cell>Q{0}</cell><value>=(E{0}+((E{0}/$C$2)*$H$3)+(((E{0}/$C$2)*$I$3)*$I$4)+(((E{0}/$C$2)*$J$3)*$J$4)+(((E{0}/$C$2)*$K$3)*$K$4)+C{0})/2</value></formula>
+    <formula><cell>R{0}</cell><value>=Q{0}*$R$7</value></formula>
+    <formula><cell>S{0}</cell><value>=((Q{0}-E{0})+R{0})-(G{0}+I{0})</value></formula>
+    <formula><cell>T{0}</cell><value>=S{0}/B{0}</value></formula>
+  </formulas>
+</template>

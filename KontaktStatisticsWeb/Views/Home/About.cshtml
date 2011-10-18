@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "About Us";
+}
+@model KontaktStatisticsWeb.Models.StatisticDefinition
+<h2>
+    Toz selektni nieco.</h2>
+@using (Html.BeginForm())
+{ 
+    <div>
+            @Html.DropDownListFor(model => model.Selected, new SelectList(KontaktStatisticsWeb.Models.StatisticDefinition.All), "Vyber moznost...")
+            <input name="btnSubmit" type="submit" value="Click" />
+    </div>
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!-- coordinates are specified byt row,column 0 based indexes -->
+  <createDate>7,0</createDate>
+  <firstRow>10</firstRow>
+  <orders>
+    <order><orderDate>6,11</orderDate><deliveryDate>7,11</deliveryDate></order>
+    <order><orderDate>6,13</orderDate><deliveryDate>7,13</deliveryDate></order>
+    <order><orderDate>6,15</orderDate><deliveryDate>7,15</deliveryDate></order>
+    <order><orderDate>6,17</orderDate><deliveryDate>7,17</deliveryDate></order>
+    <order><orderDate>6,19</orderDate><deliveryDate>7,19</deliveryDate></order>
+  </orders>
+  <!-- for values which are row specified the column index is enough -->
+  <values>
+    <code>0</code>
+    <name>1</name>
+    <kgPerUnit>2</kgPerUnit>
+    <usage2010>3</usage2010>
+    <usage2011>5</usage2011>
+    <onStock>7</onStock>
+    <ordered>
+      <order>10</order>
+      <order>12</order>
+      <order>14</order>
+      <order>16</order>
+      <order>18</order>
+    </ordered>
+  </values>
+  <!-- for formulas which are row specified the column index is enough -->
+  <formulas>
+    <formula><cell>4</cell><value>D{0}/C{0}</value></formula>
+    <formula><cell>6</cell><value>F{0}/C{0}</value></formula>
+    <formula><cell>8</cell><value>H{0}/C{0}</value></formula>
+    <formula><cell>9</cell><value>K{0}+M{0}+O{0}+Q{0}+S{0}</value></formula>
+    <formula><cell>11</cell><value>K{0}/$C${0}</value></formula>
+    <formula><cell>13</cell><value>M{0}/$C${0}</value></formula>
+    <formula><cell>15</cell><value>O{0}/$C${0}</value></formula>
+    <formula><cell>17</cell><value>Q{0}/$C${0}</value></formula>
+    <formula><cell>19</cell><value>S{0}/$C${0}</value></formula>
+    <formula><cell>20</cell><value>F{0}+((F{0}/$D$2)*$I$3)+(((F{0}/$D$2)*$J$3)*$J$4)+(((F{0}/$D$2)*$K$3)*$K$4)+(((F{0}/$D$2)*$L$3)*$L$4)</value></formula>
+    <formula><cell>21</cell><value>(F{0}+((F{0}/$D$2)*$I$3)+(((F{0}/$D$2)*$J$3)*$J$4)+(((F{0}/$D$2)*$K$3)*$K$4)+(((F{0}/$D$2)*$L$3)*$L$4)+D{0})/2</value></formula>
+    <formula><cell>22</cell><value>V{0}*$W$7</value></formula>
+    <formula><cell>23</cell><value>((V{0}-F{0})+W{0})-(H{0}+J{0})</value></formula>
+    <formula><cell>24</cell><value>X{0}/C{0}</value></formula>
+  </formulas>
+  <orderedSum><cell>9</cell><value>SUM(J{0}:J{1})</value></orderedSum>
+</template>
