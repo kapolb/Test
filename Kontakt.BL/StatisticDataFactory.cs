@@ -76,7 +76,7 @@ namespace Kontakt.BL
                 StatisticsDataBase implementation =
                     (StatisticsDataBase)Activator.CreateInstance(
                     Type.GetType(info.ClassName),
-                    this._connectionString, info.FilterForDataId, info.FilterForOrderedId, info.FilterForOnStockId);
+                    this._connectionString, info.FilterForOnStockId, info.FilterForOrderedId, info.FilterForDataId);
                 return implementation.GetStatisticData();
             }
             return null;
@@ -89,7 +89,7 @@ namespace Kontakt.BL
                 StatisticsDataBase implementation =
                     (StatisticsDataBase)Activator.CreateInstance(
                     Type.GetType(info.ClassName),
-                    this._connectionString, info.FilterForDataId, info.FilterForOrderedId, info.FilterForOnStockId);
+                    this._connectionString, info.FilterForOnStockId, info.FilterForOrderedId, info.FilterForDataId);
                 return implementation.GetStatisticData();
             }
             return null;

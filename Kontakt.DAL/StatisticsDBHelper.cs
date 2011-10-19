@@ -127,7 +127,7 @@ namespace Kontakt.DAL
         {
             // Naplname len nazov a Id v SKz
             StatisticsConnection conn = this.GetCurrentConnection();
-            DataView statAllData = this.GetStatisticsData(condition, conn.ConnectionString, conn.Year);
+            DataView statAllData = this.GetFilteredGoodsData(condition);
             //Dictionary<string, ItemData> stAll = new Dictionary<string, ItemData>();
             foreach (DataRow row in statAllData.Table.Rows)
             {
@@ -139,18 +139,10 @@ namespace Kontakt.DAL
 
                 ItemData st = data.FirstOrDefault(item => item.Code == code);
 
-                //if (!stAll.ContainsKey(code))
-                //{
-                //    st = new ItemData(code);
-                //    stAll.Add(st.Code, st);
-                //}
-                //else
-                //    st = stAll[code];
-
                 if (st != null && (string.IsNullOrEmpty(st.Name) || st.SKzId <= 0))
                 {
                     st.Name = row["Nazev"] != DBNull.Value ? row["Nazev"].ToString() : null;
-                    st.SKzId = row["RefSKz"] != DBNull.Value ? (int)row["RefSKz"] : -1;
+                    st.SKzId = row["ID"] != DBNull.Value ? (int)row["ID"] : -1;
                 }
             }
 
@@ -294,96 +286,6 @@ namespace Kontakt.DAL
             return idsStr.ToString();
         }
 
-        public List<ItemData> GetCurrentStatistics(List<ItemData> data, string conditionOrdered, string conditionOnStock)
-        {
-            if (data == null || data.Count == 0)
-                return null;
-
-            List<int> ids = new List<int>();
-            foreach (ItemData item in data)
-                if (!ids.Contains(item.SKzId))
-                    ids.Add(item.SKzId);
-
-            StringBuilder idsStr = new StringBuilder();
-            ids.ForEach(id =>
-                {
-                    if (idsStr.Length > 0)
-                        idsStr.Append(",");
-                    idsStr.Append(id);
-                });
-
-            // Chceme to nacitavat takto alebo to zadame tiez rucne? - nacitanie hmotnosti
-            //DataView goodsData = this.GetGoodsData(ids);
-            DataView goodsData = this.GetFilteredGoodsData(string.Format("id in ({0})", idsStr.ToString()));
-            //DataView goodsData = this.GetFilteredGoodsData(conditionOnStock);
-            if (goodsData != null)
-            {
-                foreach (DataRow row in goodsData.Table.Rows)
-                {
-                    int id = (int)row["ID"];
-                    ItemData item = data.FirstOrDefault(it => it.SKzId == id);
-                    if (item != null)
-                    {
-                        item.KgPerUnit = row["Hmotnost"] != DBNull.Value ? (double)row["Hmotnost"] : 0;
-                        item.OnStock = row["StavZ"] != DBNull.Value ? (double)row["StavZ"] : 0;
-                    }
-                    else
-                    {
-                        string code = row["IDS"] != DBNull.Value ? row["IDS"].ToString() : null;
-                        if (code != null)
-                        {
-                            item = new ItemData(code);
-                            item.SKzId = (int)row["ID"];
-                            item.KgPerUnit = row["Hmotnost"] != DBNull.Value ? (double)row["Hmotnost"] : 0;
-                            item.OnStock = row["StavZ"] != DBNull.Value ? (double)row["StavZ"] : 0;
-                            data.Add(item);
-                        }
-                    }
-                }
-            }
-            StatisticsConnection conn = this.GetCurrentConnection();
-            // Tutoka nacitame vydane kusy
-            DataView onStockData = this.GetFilteredGoodsViewData(conditionOnStock);
-            if (onStockData != null)
-            {
-                foreach (DataRow row in onStockData.Table.Rows)
-                {
-                    int id = (int)row["RefSKz"];
-                    ItemData item = data.FirstOrDefault(it => it.SKzId == id);
-                    if (item != null)
-                    {
-                        double outCount = row["PohPMJ"] != DBNull.Value ? (double)row["PohPMJ"] : 0;
-                        if (outCount > 0)
-                            item.AddUsage(conn.Key, outCount);
-                    }
-                }
-            }
-            // a tutoka, co je objednane
-            //DataView orderedData = this.GetFilteredGoodsData(conditionOrdered);
-            //if (onStockData != null)
-            //{
-            //    foreach (DataRow row in orderedData.Table.Rows)
-            //    {
-            //        int id = (int)row["ID"];
-            //        ItemData item = data.FirstOrDefault(it => it.SKzId == id);
-            //        if (item != null)
-            //            //item.Ordered = row["ObjedV"] != DBNull.Value ? (double)row["ObjedV"] : 0;
-            //        else
-            //        {
-            //            string code = row["IDS"] != DBNull.Value ? row["IDS"].ToString() : null;
-            //            if (code != null)
-            //            {
-            //                item = new ItemData(code);
-            //                item.SKzId = (int)row["ID"];
-            //                item.Ordered = row["ObjedV"] != DBNull.Value ? (double)row["ObjedV"] : 0;
-            //                data.Add(item);
-            //            }
-            //        }
-            //    }
-            //}
-            return data;
-        }
-
         public string GetFilter(int id)
         {
             StatisticsConnection conn = this.GetCurrentConnection();
@@ -394,7 +296,10 @@ namespace Kontakt.DAL
                 DataTable table = new DataTable("Dotazy");
                 adapter.Fill(table);
                 connection.Close();
-                return table.Rows[0]["Filter"].ToString();
+                string filter = table.Rows[0]["Filter"].ToString();
+                if (filter.Contains("qAgSKzPoh.Datum = #YEAR#"))
+                    filter = filter.Replace("qAgSKzPoh.Datum = #YEAR#", "YEAR(qAgSKzPoh.Datum) = 2011");
+                return filter;
             }
         }
 
@@ -403,7 +308,7 @@ namespace Kontakt.DAL
             StatisticsConnection conn = this.GetCurrentConnection();
             SqlConnection connection = new SqlConnection(conn.ConnectionString);
             using (SqlDataAdapter adapter = new SqlDataAdapter(
-                string.Format("select * from qAgSKzPoh where RefSKz in (select ID from SKz where {0})", condition), connection))
+                string.Format("select * from qAgSKzPoh where {0}", condition), connection))
             {
                 DataTable table = new DataTable("SKz");
                 adapter.Fill(table);

@@ -128,11 +128,10 @@ namespace Kontakt.BL
                     }
                 }
             }
+            // Este pridame tie, ktore sa doteraz nespracovali, bude to zobrazene na konci statistiky
             IEnumerable<ItemData> unprocessed = originalData.Rows.Where(he => !processed.Contains(he));
             foreach(ItemData item in unprocessed)
-            {
                 data.Rows.Add(item);
-            }
             return data;
         }
     }
