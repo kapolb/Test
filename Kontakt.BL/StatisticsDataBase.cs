@@ -10,12 +10,13 @@ namespace Kontakt.BL
 {
     public abstract class StatisticsDataBase
     {
-        public StatisticsDataBase(string connectionString, int filterDataId, int filterOrderedId, int filterConsumptionId)
+        public StatisticsDataBase(string connectionString, string usages2010Path, int filterDataId, int filterOrderedId, int filterConsumptionId)
         {
             this.DBHelper = new StatisticsDBHelper();
             this.DBHelper.AddConnection("2011", connectionString, 2011, true);
 
             this.ConnectionString = connectionString;
+            this.Usages2010Path = usages2010Path;
             this.FilterDataId = filterDataId;
             this.FilterOrderedId = filterOrderedId;
             this.FilterConsumptionId = filterConsumptionId;
@@ -23,11 +24,18 @@ namespace Kontakt.BL
 
         protected StatisticsDBHelper DBHelper { get; private set; }
         protected string ConnectionString { get; private set; }
+        protected string Usages2010Path { get; private set; }
         protected int FilterDataId { get; private set; }
         protected int FilterOrderedId { get; private set; }
         protected int FilterConsumptionId { get; private set; }
 
-        protected abstract IList<ItemData> GetAllItemsData();
+        protected virtual IList<ItemData> GetAllItemsData()
+        {
+            List<UsagePrevious> usages = Serializator.Deserialize<List<UsagePrevious>>(this.Usages2010Path + ".xml");
+            List<ItemData> data = new List<ItemData>();
+            usages.ForEach(usage =>data.Add(new ItemData(usage.Code, usage.Usage)));
+            return data;
+        }
 
         public virtual Items GetStatisticData()
         {

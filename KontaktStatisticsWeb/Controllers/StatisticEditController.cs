@@ -23,12 +23,13 @@ namespace KontaktStatisticsWeb.Controllers
                 {
                     this._factory = new StatisticsDataFactory(
                         ConfigurationManager.ConnectionStrings["KontaktDB2011"].ConnectionString,
-                        ConfigurationManager.AppSettings["TemplatesDirectory"] + "Statistics.xml");
+                        ConfigurationManager.AppSettings["TemplatesDirectory"] + "Statistics.xml",
+                        ConfigurationManager.AppSettings["UsagesDirectory"]);
                 }
                 return this._factory;
             }
         }
-        public ActionResult Index(int id)
+        public ActionResult Edit(int id)
         {
             StatisticInfo info = null;
             if (id > 0)
@@ -41,15 +42,23 @@ namespace KontaktStatisticsWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(StatInfoModel model)
+        public ActionResult Edit(StatInfoModel model)
         {
             this.FillModel(model);
             if (this.ViewData.ModelState.IsValid)
             {
                 this.Factory.UpdateStatisticInfo(model.StatInfo);
-                return RedirectToAction("Index", "He");
+                return RedirectToAction("Index", "Main");
             }
             return View(model);
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            if (id > 0)
+                this.Factory.DeleteStatisticInfo(id);
+            return RedirectToAction("Index", "Main");
         }
 
         private void FillModel(StatInfoModel model)

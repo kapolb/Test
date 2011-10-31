@@ -25,7 +25,8 @@ namespace Kontakt.Statistics
             InitializeComponent();
             this._connection2010 = ConfigurationManager.ConnectionStrings["KontaktDB2010"].ConnectionString;
             this._connection2011 = ConfigurationManager.ConnectionStrings["KontaktDB2011"].ConnectionString;
-            this._factory = new StatisticsDataFactory(this._connection2011, ConfigurationManager.AppSettings["TemplatesDirectory"] + "Statistics.xml");
+            this._factory = new StatisticsDataFactory(this._connection2011, ConfigurationManager.AppSettings["TemplatesDirectory"] + "Statistics.xml",
+                ConfigurationManager.AppSettings["UsagesDirectory"]);
         }
 
         private StatisticsDBHelper DBHelper
@@ -155,11 +156,11 @@ namespace Kontakt.Statistics
                         string filter = row.Row["Filter"].ToString();
                         if (row.Row["ID"].ToString() == "88")
                         {
-                            StatisticsDataFactory factory = new StatisticsDataFactory(this._connection2011, ConfigurationManager.AppSettings["TemplatesDirectory"] + "Statistics.xml");
-                            object he = factory.GetStatisticsData("Cables Filtered");
-                            CablesDataFiltered cablesData = new CablesDataFiltered(this._connection2011, 88, 94, 94);
+                            StatisticsDataFactory factory = new StatisticsDataFactory(this._connection2011, ConfigurationManager.AppSettings["TemplatesDirectory"] + "Statistics.xml",
+                                ConfigurationManager.AppSettings["UsagesDirectory"]);
+                            Items he = factory.GetStatisticsData("Cables Filtered");
                             //_currentData = new List<ItemData>(cablesData.GetStatisticData().Rows);
-                            this.dgvResult2.DataSource = new BindingList<ItemData>(cablesData.GetStatisticData().Rows);
+                            this.dgvResult2.DataSource = new BindingList<ItemData>(he.Rows);
                         }
                     }
                     catch

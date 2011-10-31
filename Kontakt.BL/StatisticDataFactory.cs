@@ -14,13 +14,15 @@ namespace Kontakt.BL
         private List<StatisticInfo> _statistics = new List<StatisticInfo>();
         private string _connectionString;
         private string _statisticsPath;
+        private string _usagesPath;
 
-        public StatisticsDataFactory(string connectionString, string statisticsPath)
+        public StatisticsDataFactory(string connectionString, string statisticsPath, string usagesPath)
         {
             if (!File.Exists(statisticsPath))
                 throw new FileNotFoundException(statisticsPath);
             this._connectionString = connectionString;
             this._statisticsPath = statisticsPath;
+            this._usagesPath = usagesPath;
             this._statistics = Serializator.Deserialize<List<StatisticInfo>>(this._statisticsPath);
         }
 
@@ -33,10 +35,10 @@ namespace Kontakt.BL
             }
         }
 
-        public void UpdateStatisticInfo(StatisticInfo info)
+        public bool UpdateStatisticInfo(StatisticInfo info)
         {
             if (info == null)
-                return;
+                return false;
             StatisticInfo infoOld = this._statistics.FirstOrDefault(st => st.Id == info.Id);
             if (infoOld == null)
             {
@@ -51,6 +53,17 @@ namespace Kontakt.BL
                 this._statistics.Add(infoOld);
             }
             Serializator.Serialize(this._statisticsPath, new List<StatisticInfo>(this._statistics));
+            return true; 
+        }
+        public bool DeleteStatisticInfo(decimal id)
+        {
+            StatisticInfo info = this._statistics.FirstOrDefault(st => st.Id == id);
+            if (info != null)
+            {
+                info.Active = false;
+                Serializator.Serialize(this._statisticsPath, new List<StatisticInfo>(this._statistics));
+            }
+            return true;
         }
 
         public Items GetStatisticsData(string name)
@@ -61,7 +74,8 @@ namespace Kontakt.BL
                 StatisticsDataBase implementation =
                     (StatisticsDataBase)Activator.CreateInstance(
                     Type.GetType(info.ClassName),
-                    this._connectionString, info.FilterForOnStockId, info.FilterForOrderedId, info.FilterForDataId);
+                    this._connectionString, this._usagesPath + info.Usages2010File, 
+                    info.FilterForOnStockId, info.FilterForOrderedId, info.FilterForDataId);
                 return implementation.GetStatisticData();
             }
             return null;
@@ -74,7 +88,8 @@ namespace Kontakt.BL
                 StatisticsDataBase implementation =
                     (StatisticsDataBase)Activator.CreateInstance(
                     Type.GetType(info.ClassName),
-                    this._connectionString, info.FilterForOnStockId, info.FilterForOrderedId, info.FilterForDataId);
+                    this._connectionString, this._usagesPath + info.Usages2010File, 
+                    info.FilterForOnStockId, info.FilterForOrderedId, info.FilterForDataId);
                 return implementation.GetStatisticData();
             }
             return null;

@@ -30,4 +30,34 @@
     <FilterForOnStockId>94</FilterForOnStockId>
     <FilterForOnStock>x stav skladu 601-/624-/625- lana komplet - FC/IWRC/IWSC</FilterForOnStock>
   </StatisticInfo>
+  <StatisticInfo>
+    <Active>false</Active>
+    <Id>3</Id>
+    <Name>Nova </Name>
+    <ClassName>Kontakt.BL.CablesDataFiltered</ClassName>
+    <TemplateName>601</TemplateName>
+    <GenerateName>sadas</GenerateName>
+    <Usages2010File>Kable_2010</Usages2010File>
+    <FilterForDataId>131</FilterForDataId>
+    <FilterForData>x spotreba 103- WKSK kotvy</FilterForData>
+    <FilterForOrderedId>135</FilterForOrderedId>
+    <FilterForOrdered>objednane lana pre nasu vyrobu 601-/624-/625- IWRC/FC/IWSC</FilterForOrdered>
+    <FilterForOnStockId>112</FilterForOnStockId>
+    <FilterForOnStock>x stav skladu 600- roxor</FilterForOnStock>
+  </StatisticInfo>
+  <StatisticInfo>
+    <Active>false</Active>
+    <Id>4</Id>
+    <Name>Novy zaznam</Name>
+    <ClassName>Kontakt.BL.CablesData</ClassName>
+    <TemplateName>601</TemplateName>
+    <GenerateName>asda</GenerateName>
+    <Usages2010File>Kable_2010</Usages2010File>
+    <FilterForDataId>117</FilterForDataId>
+    <FilterForData>x spotreba 600- roxor</FilterForData>
+    <FilterForOrderedId>135</FilterForOrderedId>
+    <FilterForOrdered>objednane lana pre nasu vyrobu 601-/624-/625- IWRC/FC/IWSC</FilterForOrdered>
+    <FilterForOnStockId>125</FilterForOnStockId>
+    <FilterForOnStock>x stav skladu 604- ocelove objimky pre lana zo zavitom</FilterForOnStock>
+  </StatisticInfo>
 </ArrayOfStatisticInfo>

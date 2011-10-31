@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUsagePrevious xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UsagePrevious>
+    <Code>624-L 6/6x19 FC gv</Code>
+    <Usage>1329</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 6/6x19 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 7/6x19 FC gv</Code>
+    <Usage>1776</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 7/6x19 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 8/6x19 FC gv</Code>
+    <Usage>516</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 8/6x19 IWRC gv</Code>
+    <Usage>13</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>625-L 8/6x19 IWSC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 9/6x19 FC gv</Code>
+    <Usage>511</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>625-L 9/6x19 IWSC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 9/6x19 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>625-L 10/6x19 IWSC gv</Code>
+    <Usage>566</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 12/6x19 FC gv</Code>
+    <Usage>670</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>625-L 12/6x19 IWSC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 12/6x19 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 14/6x19 FC gv</Code>
+    <Usage>211</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 16/6x37 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 16/6x37 FC gv</Code>
+    <Usage>1726</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 18/6x37 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 18/6x37 FC gv</Code>
+    <Usage>1224</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 20/6x37 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 20/6x37 FC gv</Code>
+    <Usage>541</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 22/6x37 FC gv</Code>
+    <Usage>121</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 26/6x37 FC gv</Code>
+    <Usage>704</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 26/6x37 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 28/6x37 FC gv</Code>
+    <Usage>73</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>601-L 32/6x37 IWRC gv</Code>
+    <Usage>0</Usage>
+  </UsagePrevious>
+  <UsagePrevious>
+    <Code>624-L 32/6x37 FC gv</Code>
+    <Usage>624</Usage>
+  </UsagePrevious>
+</ArrayOfUsagePrevious>
