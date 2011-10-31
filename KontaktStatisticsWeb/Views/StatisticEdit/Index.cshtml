@@ -1,11 +1,96 @@
-﻿@model KontaktStatisticsWeb.Models.Settings
-
+﻿@model KontaktStatisticsWeb.Models.StatInfoModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Editacia Statistiky";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    System.Web.Helpers.WebGrid grid = new System.Web.Helpers.WebGrid(Model.All);
+    //System.Web.Helpers.WebGrid grid = new System.Web.Helpers.WebGrid(Model.All);
 }
-
-<h2>Nastavenie štatistiky</h2>
-@grid.GetHtml()
-        
+@*@grid.GetHtml()*@
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Nastavenie štatistiky</legend>
+        <div>
+            @Html.HiddenFor(model => model.StatInfo.Id)
+            <div>
+                @Html.LabelFor(model => model.StatInfo.Name)
+                @Html.EditorFor(model => model.StatInfo.Name)
+                @Html.ValidationMessageFor(model => model.StatInfo.Name)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.StatInfo.TemplateName)
+                @(Html.DropDownListFor(model => model.StatInfo.TemplateName,
+                    new SelectList(Model.AllTemplates),
+                    new { @id = "ddTemplates" }))
+                @Html.ValidationMessageFor(model => model.StatInfo.TemplateName)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.StatInfo.GenerateName)
+                @Html.EditorFor(model => model.StatInfo.GenerateName)
+                @Html.ValidationMessageFor(model => model.StatInfo.GenerateName)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.StatInfo.ClassName)
+                @(Html.DropDownListFor(model => model.StatInfo.ClassName,
+                    new SelectList(KontaktStatisticsWeb.Models.TypeModel.GetAllTypes(), "Type", "Name"),
+                    new { @id = "ddClassName" }))
+                @Html.ValidationMessageFor(model => model.StatInfo.ClassName)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.StatInfo.Usages2010File)
+                @(Html.DropDownListFor(model => model.StatInfo.Usages2010File,
+                    new SelectList(Model.AllUsages),
+                    new { @id = "ddClassName" }))
+                @Html.ValidationMessageFor(model => model.StatInfo.Usages2010File)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.StatInfo.FilterForDataId)
+                @(Html.DropDownListFor(model => model.StatInfo.FilterForDataId,
+                    new SelectList(Model.FiltersForData, "Id", "Value"),
+                    new { @id = "ddFilterData" }))
+                @Html.ValidationMessageFor(model => model.StatInfo.FilterForDataId)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.StatInfo.FilterForOnStockId)
+                @(Html.DropDownListFor(model => model.StatInfo.FilterForOnStockId,
+            new SelectList(Model.FiltersForOnStock, "Id", "Value"),
+            new { @id = "ddFilterOnStock" }))
+                @Html.ValidationMessageFor(model => model.StatInfo.FilterForOnStockId)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.StatInfo.FilterForOrderedId)
+                @(Html.DropDownListFor(model => model.StatInfo.FilterForOrderedId,
+            new SelectList(Model.FiltersForOrdered, "Id", "Value"),
+            new { @id = "ddFilterOrdered" }))
+                @Html.ValidationMessageFor(model => model.StatInfo.FilterForOrderedId)
+            </div>
+        </div>
+        <div style="margin-top: 10px">
+            <input name="btnSubmit" type="submit" value="Ulož" />
+            <a href="/He/Index/">Naspat</a>
+        </div>
+    </fieldset> 
+}
+@section HeadContent {
+    <style type="text/css">
+        label
+        {
+            width: 190px;
+            text-align: right;
+            margin: 10px;
+            display: block;
+            float: left;
+            clear: left;
+        }
+        select
+        {
+            margin: 3px;
+        }
+        input
+        {
+            margin: 3px;
+        }
+        .field-validation-error
+        {
+            margin-bottom: 2px;
+        }
+    </style>}

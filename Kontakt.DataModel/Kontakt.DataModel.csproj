@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContract.cs" />
+    <Compile Include="IdValue.cs" />
     <Compile Include="Statistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

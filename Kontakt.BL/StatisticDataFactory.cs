@@ -13,59 +13,44 @@ namespace Kontakt.BL
     {
         private List<StatisticInfo> _statistics = new List<StatisticInfo>();
         private string _connectionString;
-
-        public StatisticsDataFactory(string connectionString)
-        {
-            this._connectionString = connectionString;
-            this._statistics.Add(new StatisticInfo()
-            {
-                Id = 1,
-                Name = "Káble",
-                ClassName = "Kontakt.BL.CablesData",
-                FilterForDataId = 118,
-                FilterForData = "x spotreba 601-/624-/625- vsetke lana IWRC/FC/IWSC",
-                FilterForOnStockId = 94,
-                FilterForOnStock = "x stav skladu 601-/624-/625- lana komplet - FC/IWRC/IWSC",
-                FilterForOrderedId = 135,
-                FilterForOrdered = "objednane lana pre nasu vyrobu 601-/624-/625- IWRC/FC/IWSC",
-                TemplateName = "601"
-            });
-            this._statistics.Add(new StatisticInfo() { 
-                Id = 2, 
-                Name = "Káble filtrované", 
-                ClassName = "Kontakt.BL.CablesDataFiltered",
-                FilterForDataId = 118,
-                FilterForData = "x spotreba 601-/624-/625- vsetke lana IWRC/FC/IWSC",
-                FilterForOnStockId = 94,
-                FilterForOnStock = "x stav skladu 601-/624-/625- lana komplet - FC/IWRC/IWSC",
-                FilterForOrderedId = 135,
-                FilterForOrdered = "objednane lana pre nasu vyrobu 601-/624-/625- IWRC/FC/IWSC",
-                TemplateName = "601"
-            });
-            // 88 - x statistika ocelove lano FC/IWRC/IWSC - RelAg: 55
-            // 94 - x stav skladu - lana - iba nase FC/IWRC/IWSC - RelAg: 20
-        }
+        private string _statisticsPath;
 
         public StatisticsDataFactory(string connectionString, string statisticsPath)
         {
             if (!File.Exists(statisticsPath))
                 throw new FileNotFoundException(statisticsPath);
             this._connectionString = connectionString;
-            this._statistics = Serializator.Deserialize<List<StatisticInfo>>(statisticsPath);
+            this._statisticsPath = statisticsPath;
+            this._statistics = Serializator.Deserialize<List<StatisticInfo>>(this._statisticsPath);
         }
-        //public void Serialize()
-        //{
-        //    Serializator.Serialize(@"C:\Statistics.xml", this._statistics);
-
-        //    List<StatisticInfo> statistics = Serializator.Deserialize<List<StatisticInfo>>(@"C:\Statistics.xml");
-        //}
 
         public IList<StatisticInfo> AllStatistics
         {
             get
             {
-                return this._statistics;
+                // Vraciame len aktivne statistiky
+                return new List<StatisticInfo>(this._statistics.Where(it => it.Active));
             }
+        }
+
+        public void UpdateStatisticInfo(StatisticInfo info)
+        {
+            if (info == null)
+                return;
+            StatisticInfo infoOld = this._statistics.FirstOrDefault(st => st.Id == info.Id);
+            if (infoOld == null)
+            {
+                infoOld = info;
+                infoOld.Id = -1;
+            }
+            else
+                infoOld.Fill(info);
+            if (infoOld.Id <= 0)
+            {
+                infoOld.Id = this._statistics.Count + 1;
+                this._statistics.Add(infoOld);
+            }
+            Serializator.Serialize(this._statisticsPath, new List<StatisticInfo>(this._statistics));
         }
 
         public Items GetStatisticsData(string name)
@@ -103,7 +88,7 @@ namespace Kontakt.BL
         {
             try
             {
-                using (TextWriter textWriter = new StreamWriter(path))
+                using (TextWriter textWriter = new StreamWriter(path, false, Encoding.UTF8))
                 {
                     var xmlSerializer = new XmlSerializer(typeof(T));
                     xmlSerializer.Serialize(textWriter, settings);
@@ -120,7 +105,7 @@ namespace Kontakt.BL
         {
             try
             {
-                using (TextReader textReader = new StreamReader(path))
+                using (TextReader textReader = new StreamReader(path, Encoding.UTF8))
                 {
                     var xmlSerializer = new XmlSerializer(typeof(T));
                     return (T)xmlSerializer.Deserialize(textReader);

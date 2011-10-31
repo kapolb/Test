@@ -20,6 +20,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 		Templates\Statistics.xml = Templates\Statistics.xml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Usages", "Usages", "{D9457E2A-FCEF-4E5F-B96F-00AD6FD8BB8F}"
+	ProjectSection(SolutionItems) = preProject
+		Templates\Usages\Kable_2010.xml = Templates\Usages\Kable_2010.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,5 +98,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D9457E2A-FCEF-4E5F-B96F-00AD6FD8BB8F} = {0B83676E-8B08-42D9-AF88-94FEAC03EEC8}
 	EndGlobalSection
 EndGlobal

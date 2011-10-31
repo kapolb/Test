@@ -240,7 +240,7 @@ namespace Kontakt.DAL
                             OrderedItems order = orders.FirstOrDefault(ord => ord.Id == id);
                             if (order == null)
                             {
-                                order = new OrderedItems() { Id = id, Code = ordNumber};
+                                order = new OrderedItems() { Id = id, Code = ordNumber };
 
                                 if (row["Datum"] != DBNull.Value)
                                     order.OrderDate = (DateTime)row["Datum"];
@@ -303,6 +303,34 @@ namespace Kontakt.DAL
             }
         }
 
+        public IList<IdValue> GetFilters(int type)
+        {
+            StatisticsConnection conn = this.GetCurrentConnection();
+            SqlConnection connection = new SqlConnection(conn.ConnectionString);
+            IList<IdValue> filters = new List<IdValue>();
+            using (SqlDataAdapter adapter = new SqlDataAdapter(
+                string.Format("select * from Dotazy where RelAg = {0}", type), connection))
+            {
+                DataTable table = new DataTable("Dotazy");
+                adapter.Fill(table);
+                connection.Close();
+                foreach (DataRow row in table.Rows)
+                {
+                    int id = row["ID"] != DBNull.Value ? (int)row["ID"] : -1;
+
+                    if (id <= 0)
+                        continue;
+
+                    string name = row["Popis"] != DBNull.Value ? row["Popis"].ToString() : null;
+
+                    if (!string.IsNullOrWhiteSpace(name))
+                        filters.Add(new IdValue() { Id = id, Value = name });
+                }
+            }
+
+            return filters;
+        }
+
         private DataView GetFilteredGoodsViewData(string condition)
         {
             StatisticsConnection conn = this.GetCurrentConnection();
@@ -330,80 +358,6 @@ namespace Kontakt.DAL
                 return table.DefaultView;
             }
         }
-
-        //public BindingList<ItemData> GetData(string condition, int month)
-        //{
-        //    //DataView statAllData = this.GetStatisticsData(condition, month);
-        //    StatisticsConnection conn = this.GetCurrentConnection();
-        //    DataView statAllData = this.GetStatisticsData(condition, conn.ConnectionString, conn.Year);
-        //    Dictionary<string, ItemData> stAll = new Dictionary<string, ItemData>();
-        //    Dictionary<int, string> ids = new Dictionary<int, string>();
-        //    foreach (DataRow row in statAllData.Table.Rows)
-        //    {
-        //        ItemData st = null;
-        //        string code = row["IDS"] != DBNull.Value ? row["IDS"].ToString() : null;
-
-        //        if (string.IsNullOrEmpty(code))
-        //            continue;
-
-        //        if (!stAll.ContainsKey(code))
-        //        {
-        //            st = new ItemData(code);
-        //            stAll.Add(st.Code, st);
-        //        }
-        //        else
-        //            st = stAll[code];
-
-        //        st.Name = row["Nazev"] != DBNull.Value ? row["Nazev"].ToString() : null;
-        //        st.SKzId = row["RefSKz"] != DBNull.Value ? (int)row["RefSKz"] : -1;
-        //        DateTime date = row["Datum"] != DBNull.Value ? (DateTime)row["Datum"] : DateTime.MinValue;
-        //        double outCount = row["PohPMJ"] != DBNull.Value ? (double)row["PohPMJ"] : 0;
-
-        //        st.AddUsage(conn.Key, outCount);
-
-        //        if (st.SKzId > 0 && !ids.ContainsKey(st.SKzId) && !string.IsNullOrEmpty(st.Code))
-        //            ids.Add(st.SKzId, st.Code);
-        //    }
-
-        //    foreach (StatisticsConnection connection in this._connections)
-        //    {
-        //        if (connection.IsCurrent)
-        //            continue;
-
-        //        statAllData = this.GetStatisticsData(condition, connection.ConnectionString, connection.Year);
-        //        foreach (DataRow row in statAllData.Table.Rows)
-        //        {
-        //            ItemData st = null;
-        //            string code = row["IDS"] != DBNull.Value ? row["IDS"].ToString() : null;
-
-        //            if (string.IsNullOrEmpty(code) || !stAll.ContainsKey(code))
-        //                continue;
-
-        //            st = stAll[code];
-
-        //            double outCount = row["PohPMJ"] != DBNull.Value ? (double)row["PohPMJ"] : 0;
-
-        //            st.AddUsage(connection.Key, outCount);
-        //        }
-        //    }
-
-        //    DataView goodsData = this.GetGoodsData(ids.Keys);
-        //    if (goodsData != null)
-        //    {
-        //        foreach (DataRow row in goodsData.Table.Rows)
-        //        {
-        //            int id = (int)row["ID"];
-        //            ItemData item = stAll.Values.FirstOrDefault(it => it.SKzId == id);
-        //            if (item != null)
-        //            {
-        //                item.OnStock = row["StavZ"] != DBNull.Value ? (double)row["StavZ"] : 0;
-        //                item.KgPerUnit = row["Hmotnost"] != DBNull.Value ? (double)row["Hmotnost"] : 0;
-        //                //item.Ordered = row["ObjedV"] != DBNull.Value ? (double)row["ObjedV"] : 0;
-        //            }
-        //        }
-        //    }
-        //    return new BindingList<ItemData>(stAll.Values.OrderBy(i => i.SKzId).ToList());
-        //}
 
         private StatisticsConnection GetCurrentConnection()
         {

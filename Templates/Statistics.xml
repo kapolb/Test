@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfStatisticInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <StatisticInfo>
+    <Active>true</Active>
     <Id>1</Id>
     <Name>Káble</Name>
     <ClassName>Kontakt.BL.CablesData</ClassName>
     <TemplateName>601</TemplateName>
     <GenerateName>601_Kable</GenerateName>
+    <Usages2010File>Kable_2010</Usages2010File>
     <FilterForDataId>118</FilterForDataId>
     <FilterForData>x spotreba 601-/624-/625- vsetke lana IWRC/FC/IWSC</FilterForData>
     <FilterForOrderedId>135</FilterForOrderedId>
@@ -14,11 +16,13 @@
     <FilterForOnStock>x stav skladu 601-/624-/625- lana komplet - FC/IWRC/IWSC</FilterForOnStock>
   </StatisticInfo>
   <StatisticInfo>
+    <Active>true</Active>
     <Id>2</Id>
     <Name>Káble filtrované</Name>
     <ClassName>Kontakt.BL.CablesDataFiltered</ClassName>
     <TemplateName>601</TemplateName>
     <GenerateName>601_Kable_IWRC</GenerateName>
+    <Usages2010File>Kable_2010</Usages2010File>
     <FilterForDataId>118</FilterForDataId>
     <FilterForData>x spotreba 601-/624-/625- vsetke lana IWRC/FC/IWSC</FilterForData>
     <FilterForOrderedId>135</FilterForOrderedId>

@@ -69,6 +69,35 @@ namespace Kontakt.BL
             data.Add(new ItemData("624-L 28/6x37 FC gv", 73));
             data.Add(new ItemData("601-L 32/6x37 IWRC gv", 0));
             data.Add(new ItemData("624-L 32/6x37 FC gv", 624));
+            //List<UsagePrevious> usages = new List<UsagePrevious>();
+            //usages.Add(new UsagePrevious("624-L 6/6x19 FC gv", 1329));
+            //usages.Add(new UsagePrevious("601-L 6/6x19 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 7/6x19 FC gv", 1776));
+            //usages.Add(new UsagePrevious("601-L 7/6x19 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 8/6x19 FC gv", 516));
+            //usages.Add(new UsagePrevious("601-L 8/6x19 IWRC gv", 13));
+            //usages.Add(new UsagePrevious("625-L 8/6x19 IWSC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 9/6x19 FC gv", 511));
+            //usages.Add(new UsagePrevious("625-L 9/6x19 IWSC gv", 0));
+            //usages.Add(new UsagePrevious("601-L 9/6x19 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("625-L 10/6x19 IWSC gv", 566));
+            //usages.Add(new UsagePrevious("624-L 12/6x19 FC gv", 670));
+            //usages.Add(new UsagePrevious("625-L 12/6x19 IWSC gv", 0));
+            //usages.Add(new UsagePrevious("601-L 12/6x19 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 14/6x19 FC gv", 211));
+            //usages.Add(new UsagePrevious("601-L 16/6x37 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 16/6x37 FC gv", 1726));
+            //usages.Add(new UsagePrevious("601-L 18/6x37 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 18/6x37 FC gv", 1224));
+            //usages.Add(new UsagePrevious("601-L 20/6x37 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 20/6x37 FC gv", 541));
+            //usages.Add(new UsagePrevious("624-L 22/6x37 FC gv", 121));
+            //usages.Add(new UsagePrevious("624-L 26/6x37 FC gv", 704));
+            //usages.Add(new UsagePrevious("601-L 26/6x37 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 28/6x37 FC gv", 73));
+            //usages.Add(new UsagePrevious("601-L 32/6x37 IWRC gv", 0));
+            //usages.Add(new UsagePrevious("624-L 32/6x37 FC gv", 624));
+            //Serializator.Serialize<List<UsagePrevious>>(@"C:\Projects\Git\Templates\Kable_2010.xml", usages);
             return data;
         }
     }

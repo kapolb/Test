@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatisticDataFactory.cs" />
     <Compile Include="StatisticInfo.cs" />
+    <Compile Include="Usage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kontakt.DAL\Kontakt.DAL.csproj">
